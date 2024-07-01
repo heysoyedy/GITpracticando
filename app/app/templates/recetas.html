@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+ 
+{% block body%}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages%}
+  <p>{{message}}</p>
+{%endfor%}
+{%endif%}
+{%endwith%}
+<div class="container mt-5">
+    <table>
+        <thead>
+            <tr>
+                <td>Nombre</td>
+                <td>IMg</td>
+                <td>Descripcion</td>
+                <td>Receta</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for dato in datosrecuperados%}
+                <tr>
+                    <td>{{dato.1}}</td>
+                    <td>{{dato.2}}</td>
+                    <td>{{dato.3}}</td>
+                    <td>{{dato.4}}</td>
+                    <td>
+                        <a href="/edit/{{dato.0}}">Editar</a>
+                        <a href="/eliminar/{{dato.0}}">Eliminar</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+{%endblock%}
